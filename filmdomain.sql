@@ -21,7 +21,8 @@ CREATE TABLE movies (
 
 CREATE TABLE actors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT
+  name TEXT,
+  agent_id INTEGER
 );
 
 CREATE TABLE performances (
@@ -78,11 +79,15 @@ VALUES (
 );
 
 INSERT INTO actors (
-  name
+  name,
+  agent_id
 )
 VALUES (
-    "Christian Bale"
-);INSERT INTO actors (
+    "Christian Bale",
+    1
+);
+
+INSERT INTO actors (
   name
 )
 VALUES (
@@ -95,6 +100,7 @@ INSERT INTO actors (
 VALUES (
     "Liam Neeson"
 );
+
 INSERT INTO actors (
   name
 )
@@ -346,10 +352,14 @@ SELECT title, name, role FROM performances
 -- Prints a header for the agent's list of represented actors
 .print ""
 .print "Represented by agent"
-.print "===================="
+.print "Max Prasad"
 .print ""
 
 -- The SQL statement for the represented actor(s) output goes here.
+
+SELECT name FROM actors
+    WHERE agent_id = 1
+    ;
 
 -- Example output:
 -- Represented by agent
