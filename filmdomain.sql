@@ -162,6 +162,16 @@ VALUES (
     "Gary Oldman"
 );
 
+INSERT INTO performances (
+    role,
+    movie_id,
+    actor_id
+)
+VALUES (
+    "Bruce Wayne",
+    1,
+    1
+);
 -- Prints a header for the movies output
 .print "Movies"
 .print "======"
@@ -178,4 +188,20 @@ SELECT * FROM movies;
 
 -- The SQL statement for the cast output goes here.
 
-SELECT * FROM actors;
+SELECT title, name, role FROM performances
+    INNER JOIN movies ON movies.id = performances.movie_id
+    INNER JOIN actors ON actors.id = performances.actor_id
+    ;
+
+-- Prints a header for the agent's list of represented actors
+.print ""
+.print "Represented by agent"
+.print "===================="
+.print ""
+
+-- The SQL statement for the represented actor(s) output goes here.
+
+-- Example output:
+-- Represented by agent
+-- ====================
+-- Christian Bale
